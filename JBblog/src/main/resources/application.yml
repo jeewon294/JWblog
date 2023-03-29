@@ -1,0 +1,13 @@
+# 서버 설정
+server:
+  port: 8086
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+# 뷰리졸버 설정
+spring:
+  mvc: 
+   view:
+    prefix: /WEB-INF/jblog/
+    suffix: .jsp
