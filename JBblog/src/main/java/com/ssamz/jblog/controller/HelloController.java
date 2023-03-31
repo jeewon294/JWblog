@@ -1,6 +1,7 @@
 package com.ssamz.jblog.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -14,5 +15,12 @@ public class HelloController {
 	public String image() {
 		System.out.println("이미지 파일이 요청됨");
 		return "redirect:image/";
+	}
+	
+	@GetMapping("/jsp")
+	public String jsp(Model model) {
+		System.out.println("jsp파일이 요청됨");
+		model.addAttribute("username", "쌤즈");
+		return "index";
 	}
 }
