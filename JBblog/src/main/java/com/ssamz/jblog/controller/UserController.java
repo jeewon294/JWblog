@@ -1,12 +1,12 @@
 package com.ssamz.jblog.controller;
 
-import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,11 +15,14 @@ import com.ssamz.jblog.domain.User;
 import com.ssamz.jblog.exception.JBlogException;
 import com.ssamz.jblog.persistence.UserRepository;
 
+import jakarta.transaction.Transactional;
+
 @Controller
 public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	// 회원가입
 	@PostMapping("/user")
 	public @ResponseBody String insertUser(@RequestBody User user) {
 		user.setRole(RoleType.USER);
@@ -27,6 +30,7 @@ public class UserController {
 		return user.getUsername() + "회원가입 성공";
 	}
 	
+	// 회원 조회
 	@GetMapping("/user/get/{id}")
 	public @ResponseBody User getUser(@PathVariable int id) {
 		// 특정 id(회원번호)에 해당하는 User 객체 변환
@@ -41,4 +45,19 @@ public class UserController {
 		});
 		return findUser;
 	}
+	
+	// 회원 수정
+	@Transactional
+	@PutMapping("/user")
+	public @ResponseBody String updateUser(@RequestBody User user) {
+		User findUser = userRepository.findById(user.getId()).orElseThrow(()->{
+			return new JBlogException(user.getId() + "번 회원이 없습니다.");
+		});
+		findUser.setUsername(user.getUsername());
+		findUser.setPassword(user.getPassword());
+		findUser.setEmail(user.getEmail());
+		
+//		userRepository.save(findUser);
+		return "회원수정 성공";
+	} 
 }
