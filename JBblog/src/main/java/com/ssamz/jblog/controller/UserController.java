@@ -3,6 +3,7 @@ package com.ssamz.jblog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,4 +61,12 @@ public class UserController {
 //		userRepository.save(findUser);
 		return "회원수정 성공";
 	} 
+	
+	// 회원 삭제
+	@DeleteMapping("/user/{id}")
+	public @ResponseBody String deleteUser(@PathVariable int id) {
+		userRepository.deleteById(id);
+		return "회원 삭제 성공";
+	}
+	
 }
