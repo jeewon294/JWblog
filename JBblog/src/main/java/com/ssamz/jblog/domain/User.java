@@ -26,7 +26,7 @@ public class User {
 	// 기본키에 대응하는 식별자 변수
 	@Id
 	// 1부터 시작하여 자동으로 1씩 증가하도록 증가 전략 설정
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id; 		 // 회원 일련번호
 	
 	@Column(nullable = false, length = 50, unique = true)
