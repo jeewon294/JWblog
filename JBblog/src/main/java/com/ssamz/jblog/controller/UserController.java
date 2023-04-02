@@ -1,7 +1,13 @@
 package com.ssamz.jblog.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +35,32 @@ public class UserController {
 		user.setRole(RoleType.USER);
 		userRepository.save(user);
 		return user.getUsername() + "회원가입 성공";
+	}
+	
+	// 회원 목록
+	@GetMapping("/user/list")
+	public @ResponseBody List<User> getUserList(){
+		return userRepository.findAll();
+	}
+	
+// 회원 목록 페이지
+
+//	page에 해당하는 2개의 데이터 조회
+//	id 와 username 내림차순 정렬
+	
+//  방법1
+//  @GetMapping("user/page/{page}")
+//	public @ResponseBody Page<User> getUserListPaging(@PathVariable int page){
+//	PageRequest pageable = 
+//	PageRequest.of(page, 2, Sort.Direction.DESC, "id", "username");
+
+//  방법2	
+	@GetMapping("user/page")
+	public @ResponseBody Page<User> getUserListPaging(
+			@PageableDefault(page = 0, size = 2, direction = Sort.Direction.DESC,
+			sort = {"id", "username"}) Pageable pageable){	
+		
+		return userRepository.findAll(pageable);
 	}
 	
 	// 회원 조회
