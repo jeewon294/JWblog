@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PostCotroller {
-	@GetMapping({})
+	@GetMapping({"","/"})
 		public String getPostList(){
 			return "index";
 		}	
