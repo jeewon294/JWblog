@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Bootstrap Example</title>
+<title>jw.home</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css"
+	rel="stylesheet">
 <script src="/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 <script src="/webjars/jquery/3.5.1/dist/jquery.min.js"></script>
 </head>
@@ -21,10 +22,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="navbar-nav me-auto">
+					<li class="nav-item"><a class="nav-link" href="/auth/login">로그인</a></li>
+					<!-- 로그인 -->
 					<li class="nav-item"><a class="nav-link"
-						href="javascript:void(0)">Link</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="javascript:void(0)">Link</a></li>
+						href="/auth/insertUser">회원가입</a></li>
+					<!-- 회원가입 -->
 					<li class="nav-item"><a class="nav-link"
 						href="javascript:void(0)">Link</a></li>
 				</ul>
@@ -35,11 +37,23 @@
 			</div>
 		</div>
 	</nav>
-
-	<div class="container-fluid mt-3">
-		<h3>Navbar Forms</h3>
-		<p>You can also include forms inside the navigation bar.</p>
+	<div class="container mt-3">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">포스트 제목</h4>
+				<a href="#" class="btn btn-secondary">상세보기</a> 
+			</div>
+		</div>
 	</div>
+	
+	
+	
+	<br>
+	<div class="mt-5 p-4 text-center">
+		<p>Create by 이지원</p>
+		<p>연락처: 010-2611-6795, 주소지: 신당동 409-23번지</p>
+		<p>이메일: jeewon293@naver.com</p>
+</div>
 
 </body>
 </html>
