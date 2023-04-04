@@ -27,6 +27,10 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/auth/insertUser">회원가입</a></li>
 			</ul>
+			<form class="d-flex">
+		        <input class="form-control me-2" type="text" placeholder="Search">
+		        <button class="btn btn-primary" type="button">Search</button>
+      		</form>
 		</div>
 	</div>
 </nav>
