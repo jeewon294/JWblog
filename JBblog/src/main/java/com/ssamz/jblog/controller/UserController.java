@@ -21,7 +21,7 @@ public class UserController {
 	
 	@GetMapping("/auth/insertUser")
 	public String insertUser() {
-		System.out.println(9/0);
+//		System.out.println(9/0); // 에러 테스트
 		return "user/insertUser";
 	}
 	
