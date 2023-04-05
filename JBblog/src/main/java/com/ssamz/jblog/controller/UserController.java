@@ -21,6 +21,7 @@ public class UserController {
 	
 	@GetMapping("/auth/insertUser")
 	public String insertUser() {
+		System.out.println(9/0);
 		return "user/insertUser";
 	}
 	
