@@ -37,4 +37,4 @@ let loginObject = {
 }
 
 // userObject 객체의 init() 함수 호출.
-userObject.init();
+loginObject.init();

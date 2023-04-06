@@ -19,11 +19,6 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/auth/login")
-	public String login() {
-		return "system/login";
-	}
-	
 	@PostMapping("/auth/login")
 	public @ResponseBody ResponseDTO<?> login(@RequestBody User user, HttpSession session){
 		User findUser = userService.getUser(user.getUsername());
@@ -41,5 +36,12 @@ public class LoginController {
 			}
 		}
 	}
+	
+	@GetMapping("/auth/login")
+	public String login() {
+		return "system/login";
+	}
+	
+	
 	
 }
