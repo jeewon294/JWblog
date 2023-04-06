@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +21,7 @@
 		</button>
 		
 		<div class="collapse navbar-collapse" id="mynavbar">
-		<c:if test="${sessionScope.principa == null}">
+		<c:if test="${sessionScope.principal == null}">
 			<ul class="navbar-nav">
 			<li class="nav-item">
 				<a class="nav-link" href="/auth/login">로그인</a></li>
@@ -35,6 +35,8 @@
 					<a class="nav-link" href="/user/updateUser">회원상세</a></li>
 				<li class="nav-item">
 					<a class="nav-link" href="/post/insertPost">포스트 등록</a></li>
+				<li class="nav-item">
+					<a class="nav-link" href="/auth/logout">로그아웃</a></li>
 			</ul>
 		</c:if>
 			<form class="d-flex">
