@@ -22,8 +22,9 @@
 
 		<button id="btn-login" class="btn btn-secondary">로그인</button>
 	</div>
-	<script src="/js/login.js"></script>
-	<%@ include file="../layout/footer.jsp"%>
+	
+<script src="/js/login.js"></script>
+<%@ include file="../layout/footer.jsp"%>
 </body>
 </html>
 

@@ -52,18 +52,29 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 		
-		<!--Jstl 라이브러리 -->
+		
+	<!--	Jstl 라이브러리 -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>jstl</artifactId>
 		    <version>1.2</version>
 		</dependency>
 		
+		
+		<dependency>
+		    <groupId>org.apache.taglibs</groupId>
+		    <artifactId>taglibs-standard-impl</artifactId>
+		    <version>1.2.5</version>
+		    <scope>runtime</scope>
+		</dependency>
+		
+		
 		<!-- Jsp를 라이브러 Servlet으로 변환하는 라이브러리 -->
 		<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
+		
 		
 		<!-- Bootstrap 라이브러리 -->
 		<dependency>
