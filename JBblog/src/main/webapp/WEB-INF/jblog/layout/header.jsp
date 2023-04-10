@@ -11,7 +11,12 @@
 	rel="stylesheet">
 <script src="/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 <script src="/webjars/jquery/3.5.1/dist/jquery.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="/webjars/summernote/summernote-bs4.css" rel="stylesheet">
+<script src="/webjars/summernote/summernote-bs4.min.js"></script>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 	<div class="container-fluid">

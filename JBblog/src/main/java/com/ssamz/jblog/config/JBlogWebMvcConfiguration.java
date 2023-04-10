@@ -14,3 +14,4 @@ public class JBlogWebMvcConfiguration implements WebMvcConfigurer{
 	}
 	
 }
+
