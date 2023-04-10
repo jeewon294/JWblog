@@ -1,9 +1,5 @@
 package com.ssamz.jblog.controller;
 
-
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -16,7 +12,7 @@ import com.ssamz.jblog.domain.User;
 import com.ssamz.jblog.dto.ResponseDTO;
 import com.ssamz.jblog.service.UserService;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 
 
