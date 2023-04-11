@@ -7,10 +7,7 @@
 <title>jw.home</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css"
-	rel="stylesheet">
-<script src="/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-<script src="/webjars/jquery/3.5.1/dist/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -32,10 +29,11 @@
 </div>
 
 <script>
-$(document).ready(function() {
-  $('#content').summernote();
-  	height: 300	
+$(document).ready(function(){
+	$("content").summernote({
+		height:300
 	});
+});
 </script>
 
 <script src="/js/post.js"></script>
