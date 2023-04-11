@@ -25,4 +25,16 @@ public class PostService {
 	public Page<Post> getPostList(Pageable pageable){
 		return postRepository.findAll(pageable);
 	}
+	
+	@Transactional(readOnly = true)
+	public Post getPost(int id) {
+		return postRepository.findById(id).get();
+	}
+	
+	@Transactional
+	public void updatePost(Post post) {
+		Post findPost = postRepository.findById(post.getId()).get();
+		findPost.setTitle(post.getTitle());
+		findPost.setContent(post.getContent());
+	}
 }
