@@ -8,6 +8,10 @@ let postObject = {
 		$("#btn-update").on("click",() => {
 			_this.updatePost();
 		});
+		
+		$("#btn-delete").on("click",() => {
+			_this.deletePost();
+		});
 	},
 	
 	insertPost : function(){
@@ -52,6 +56,24 @@ let postObject = {
 		}).fail(function(error){
 			let message = error["data"];
 			alert("문제 발생:" + message);
+		});
+	},
+	
+	deletePost: function(){
+		alert("포스트 삭제 요청됨");
+		let id = $("#id").text();
+		
+		$.ajax({
+			type: "DELETE",
+			url: "/post/" + id,
+			contentType: "application/json; charset=utf-8"
+		}).done(function(response){
+			let message = response["data"];
+			alert(message);
+			location = "/";
+		}).fail(function(error){
+			let message = error["data"];
+			alert("문제 발생 : " + message);
 		});
 	},
 }
