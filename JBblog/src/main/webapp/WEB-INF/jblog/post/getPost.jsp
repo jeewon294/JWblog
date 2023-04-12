@@ -30,7 +30,7 @@
 	
 	<hr>
 	<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
-	<a href="/post/updatePost/{post.id}" class="btn btn-warning">수정하기</a>
+	<a href="/post/updatePost/${post.id}" class="btn btn-warning">수정하기</a>
 	<button id="btn-delete" class="btn btn-danger">삭제하기</button>
 	<br><br>
 </div>
