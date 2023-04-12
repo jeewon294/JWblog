@@ -7,14 +7,12 @@
 <title>jw.home</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
 <body>
-
 <br>
 <div class="container mt-3">
   <form>
-  	<input type="hidden" id="id" value="${post.id}">
+  	<input type=hidden id="id" value="${post.id}">
     <div class="mb-3">
       <label for="title">Title:</label>
       <input type="text" class="form-control" id="title" value="${post.title}">

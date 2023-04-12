@@ -52,8 +52,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 		
+		<!-- thymeleaf-->
+		<!--<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>-->
 		
-	<!--	Jstl 라이브러리 -->
+		
+		<!--Jstl 라이브러리 -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>jstl</artifactId>
@@ -95,7 +101,7 @@
 		    <artifactId>summernote</artifactId>
 		    <version>0.8.10</version>
 		</dependency>
-
+	
 	</dependencies>
 
 	<build>
