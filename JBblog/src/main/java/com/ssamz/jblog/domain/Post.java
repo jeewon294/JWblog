@@ -3,6 +3,7 @@ package com.ssamz.jblog.domain;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +50,7 @@ public class Post {
 	@JoinColumn(name = "userid")
 	private User user;
 	
-	@OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade =CascadeType.REMOVE)
 	@OrderBy("id desc")
 	private List<Reply> replyList;
 }
