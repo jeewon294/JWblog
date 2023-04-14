@@ -1,7 +1,6 @@
 package com.ssamz.jblog.domain;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,10 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -27,29 +23,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Post {
+public class Reply {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int id; // 댓글 일련번호
 	
-	@Column(nullable = false, length = 100)
-	private String title;
-	
-	//서머노트를 적용하면 다양한 <html> 태그가 포함된다. 
-	@Lob
-	@Column(nullable = false)
-	private String content;
+	@Column
+	private String content; // 댓글 내용
 	
 	@CreationTimestamp
-	private Timestamp createDate;
-	
-	private int cnt;
+	private Timestamp createDate; // 댓글 등록일
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userid")
-	private User user;
+	private User user; // 연관된 사용자
 	
-	@OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
-	@OrderBy("id desc")
-	private List<Reply> replyList;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "postid")
+	private Post post; // 연관된 포스트
 }
