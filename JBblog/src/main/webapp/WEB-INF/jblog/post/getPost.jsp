@@ -37,30 +37,6 @@
 	<button id="btn-delete" class="btn btn-danger">삭제하기</button>
 	</c:if>
 	<br><br>
-	
-	<c:if test="${!empty post.replyList}">
-	<div class="container mt-3">
-		<table class="table">
-			<thead>
-				<tr>
-					<th width="80%">내용</th>
-					<th width="10%">작성자</th>
-					<th width="10%">삭제</th>
-				</tr>
-			</thead>
-			<tbody>
-			<c:forEach var="reply" items="${post.replyList}">
-				<tr>
-					<td>${reply.content}</td>
-					<td>${reply.user.username}</td>
-					<td><button>삭제</button></td>
-				</tr>
-			</c:forEach>
-			</tbody>
-		</table>
-	</div>
-	</c:if>
-	
 	<div class="container mt-3">
 		<input type="hidden" id="postId" value="${post.id}">
 		<table class="table">
@@ -79,6 +55,41 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<c:if test="${!empty post.replyList}">
+	<div class="container mt-3">
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="80%">내용</th>
+					<th width="10%">작성자</th>
+					<c:if test="${reply.user.username !=null && reply.user.username == principal.username}">
+					<th width="10%">삭제</th>
+					</c:if>
+				</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="reply" items="${post.replyList}">
+				<tr>
+					<td>${reply.content}</td>
+					<td>${reply.user.username}</td>
+					<c:if test="${reply.user.username !=null && reply.user.username == principal.username}">
+					<td><button onclick="replyObject.deleteReply(${post.id}, ${reply.id})">삭제</button></td>
+					</c:if>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	</c:if>
+	
+	<c:forEach var="reply" items="${post.replyList}">
+		<tr>
+			<td>${reply.content}</td>
+			<td>${reply.user.username}</td>
+		<td><button onclick="replyObject.deleteReply(${post.id}, ${reply.id})">삭제</button></td>	
+		</tr>
+	</c:forEach>
 </div>
 
 

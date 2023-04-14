@@ -26,16 +26,16 @@ let replyObject = {
 		});
 	},
 	
-	deleteReply : function(){
+	deleteReply : function(postId, replyId){
 		alert("댓글 삭제 요청됨");
 		
 		$.ajax({
 			type: "DELETE",
-			url:"/reply/" + replyId
+			url: "/reply/" + replyId
 		}).done(function(response){
 			let message = response["data"];
 			alert(message);
-			location="/post/" + postid;
+			location= "/post/" + postId;
 		});
 	},
 }
