@@ -47,15 +47,6 @@ public class PostController {
 	
 	@PostMapping("/post")
 	public @ResponseBody ResponseDTO<?> insertPost(@Valid @RequestBody PostDTO postDTO, BindingResult bindingResult ,HttpSession session){
-		//PostDTO 객체에 대한 유효성 검사
-		if(bindingResult.hasErrors()) {
-			//에러가 하나라도 있다면 에러 메시지를 Map에 등록
-			Map<String, String> errorMap = new HashMap<>();
-			for(FieldError error : bindingResult.getFieldErrors()) {
-				errorMap.put(error.getField(), error.getDefaultMessage());
-			}
-			return new ResponseDTO<>(HttpStatus.BAD_REQUEST.value(),errorMap);
-		}
 		// PostDTO -> Post 객체로 변환
 		Post post = modelMapper.map(postDTO, Post.class);
 		
