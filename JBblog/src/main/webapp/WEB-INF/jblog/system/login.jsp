@@ -9,25 +9,23 @@
 </head>
 <body>
 	<div class="container mt-3">
-		<form>
+		<form action="/auth/securitylogin" method="post">
 			<div class="mb-3">
 				<label for="username">
 				<spring:message code="user.login.form.username"/>:</label> 
-				<input type="text" class="form-control" id="username" placeholder="Enter username">
+				<input type="text" class="form-control" name="username" placeholder="Enter username" value="test">
 			</div>
 			<div class="mb-3">
 				<label for="password">
 				<spring:message code="user.login.form.password"/>:</label> 
-				<input type="text" class="form-control" id="password" placeholder="Enter password">
+				<input type="text" class="form-control" name="password" placeholder="Enter password" value="test123">
 			</div>
-		</form>
+		
 
-		<button id="btn-login" class="btn btn-secondary">
-			<spring:message code="user.login.form.login_btn"/>
-		</button>
+			<button id="btn-login" class="btn btn-secondary">로그인</button>
+		</form>	
 	</div>
 	
-<script src="/js/login.js"></script>
 <%@ include file="../layout/footer.jsp"%>
 </body>
 </html>
