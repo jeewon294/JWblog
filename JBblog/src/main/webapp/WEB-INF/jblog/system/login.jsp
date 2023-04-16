@@ -10,17 +10,21 @@
 <body>
 	<div class="container mt-3">
 		<form>
-			<div class="mt-3">
-				<label for="username">User name:</label> <input type="text"
-					class="form-control" id="username" placeholder="Enter username">
+			<div class="mb-3">
+				<label for="username">
+				<spring:message code="user.login.form.username"/>:</label> 
+				<input type="text" class="form-control" id="username" placeholder="Enter username">
 			</div>
-			<div class="mb3">
-				<label for="password">Password:</label> <input type="text"
-					class="form-control" id="password" placeholder="Enter password">
+			<div class="mb-3">
+				<label for="password">
+				<spring:message code="user.login.form.password"/>:</label> 
+				<input type="text" class="form-control" id="password" placeholder="Enter password">
 			</div>
 		</form>
 
-		<button id="btn-login" class="btn btn-secondary">로그인</button>
+		<button id="btn-login" class="btn btn-secondary">
+			<spring:message code="user.login.form.login_btn"/>
+		</button>
 	</div>
 	
 <script src="/js/login.js"></script>
