@@ -29,6 +29,7 @@ public class JBlogWebMvcConfiguration implements WebMvcConfigurer{
 		ResourceBundleMessageSource messageSource = 
 				new ResourceBundleMessageSource();
 		messageSource.setBasename("message/messageSource");
+		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
 	}
 	
