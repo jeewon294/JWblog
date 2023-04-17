@@ -1,9 +1,9 @@
 package com.ssamz.jblog.controller;
 
-import java.util.HashMap;
+/*import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;*/
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
@@ -12,10 +12,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
+/*import org.springframework.validation.FieldError;*/
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,8 +28,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ssamz.jblog.domain.Post;
 import com.ssamz.jblog.dto.PostDTO;
 import com.ssamz.jblog.dto.ResponseDTO;
+import com.ssamz.jblog.security.UserDetailsImpl;
 import com.ssamz.jblog.service.PostService;
-import com.ssamz.jblog.domain.User;
+/*import com.ssamz.jblog.domain.User;*/
+
 @Controller
 public class PostController {
 	
@@ -46,13 +49,14 @@ public class PostController {
 	
 	
 	@PostMapping("/post")
-	public @ResponseBody ResponseDTO<?> insertPost(@Valid @RequestBody PostDTO postDTO, BindingResult bindingResult ,HttpSession session){
+	public @ResponseBody ResponseDTO<?> insertPost(@Valid @RequestBody PostDTO postDTO, BindingResult bindingResult,
+			@AuthenticationPrincipal UserDetailsImpl principal){
 		// PostDTO -> Post 객체로 변환
 		Post post = modelMapper.map(postDTO, Post.class);
 		
 		// Post 객체를 영속화하기 전 연관된 User 엔티티 설정
-		User principal = (User) session.getAttribute("principal");
-		post.setUser(principal);
+		/* User principal = (User) session.getAttribute("principal"); */ 
+		post.setUser(principal.getUser());
 		post.setCnt(0);
 		
 		postService.insertPost(post);

@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ssamz.jblog.domain.User;
 import com.ssamz.jblog.dto.ResponseDTO;
 import com.ssamz.jblog.dto.UserDTO;
+import com.ssamz.jblog.security.UserDetailsImpl;
 import com.ssamz.jblog.service.UserService;
 
 @Controller
@@ -60,8 +62,12 @@ public class UserController {
 	}
 	
 	@PutMapping("/user")
-	public @ResponseBody ResponseDTO<?> updateUser(@RequestBody User user){
-		userService.updateUser(user);
+	public @ResponseBody ResponseDTO<?> updateUser(@RequestBody User user, 
+			@AuthenticationPrincipal UserDetailsImpl principal){
+		// 회원정보 수정과 동시에 세션 갱긴
+		principal.setUser(userService.updateUser(user));
+		
+		/* userService.updateUser(user); */
 		return new ResponseDTO<>(HttpStatus.OK.value(), user.getUsername() + "수정 완료");
 	}
 	
