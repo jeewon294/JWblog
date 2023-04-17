@@ -8,6 +8,10 @@ let userObject = {
 		$("#btn-save").on("click", () => {
 			_this.insertUser();
 		});
+		
+		$("#btn-update").on("click",() => {
+			_this.updateUser();
+		})
 	},
 	
 	insertUser: function(){
@@ -49,6 +53,29 @@ let userObject = {
 			alert("에러 발생 : " + error);
 		});
 
+	},
+	
+	updateUser: function(){
+		alert("회정 정보 수정 요청");
+		let user = {
+			id: $("#id").val(),
+			username: $("#username").val(),
+			password: $("#password").val(),
+			email: $("#email").val()
+		}
+		$.ajax({
+			type : "PUT",
+			url : "/user",
+			data : JSON.stringify(user),
+			contentType: "application/json; charset=utf-8",
+		}).done(function(response){
+			let message = response["data"];
+			alert(message);
+			location = "/";
+		}).fail(function(error){
+			let message = error["data"];
+			alert("문제 발생 :" + message);
+		});
 	},
 }
 

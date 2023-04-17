@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -52,5 +53,17 @@ public class UserController {
 			return new ResponseDTO<>(HttpStatus.BAD_REQUEST.value(), user.getUsername() + "님은 이미 회원입니다.");
 		}		
 	}
+	
+	@GetMapping("/user/updateUser")
+	public String updateUser() {
+		return "user/updateUser";
+	}
+	
+	@PutMapping("/user")
+	public @ResponseBody ResponseDTO<?> updateUser(@RequestBody User user){
+		userService.updateUser(user);
+		return new ResponseDTO<>(HttpStatus.OK.value(), user.getUsername() + "수정 완료");
+	}
+	
 	
 }

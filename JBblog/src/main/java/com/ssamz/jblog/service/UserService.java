@@ -45,4 +45,12 @@ public class UserService {
 		
 		return findUser;
 	}
+	
+	@Transactional
+	public void updateUser(User user) {
+		User findUser = userRepository.findById(user.getId()).get();
+		findUser.setUsername(user.getUsername());
+		findUser.setPassword(passwordEncoder.encode(user.getPassword()));
+		findUser.setEmail(user.getEmail());
+	}
 }
