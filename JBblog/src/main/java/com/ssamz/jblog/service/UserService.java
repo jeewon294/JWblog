@@ -3,6 +3,7 @@ package com.ssamz.jblog.service;
 //import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +16,13 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@Transactional
 	public void insertUser(User user) {
+		// 비밀번호 암호화하여 설정
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setRole(RoleType.USER);
 		userRepository.save(user);
 	}
