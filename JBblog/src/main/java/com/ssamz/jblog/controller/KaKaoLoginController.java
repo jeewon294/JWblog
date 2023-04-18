@@ -17,8 +17,12 @@ public class KaKaoLoginController {
 		// 1. 인증 서버로부터 받은 CODE를 이용하여 엑세스 토큰을 얻는다. 
 		String accessToken = kakaoLoginService.getAccessToken(code);
 		
-		// 응답을 콘솔과 브라우저에서 출력한다. 
-		System.out.println(accessToken);
-		return accessToken;
+		// 2. 액세스 토큰을 이용하여 사용자 정보를 얻어온다.
+		String userInfo = kakaoLoginService.getUserInfo(accessToken);
+		return userInfo;
+		
+		/*
+		 * // 응답을 콘솔과 브라우저에서 출력한다. System.out.println(accessToken); return accessToken;
+		 */
 	}
 }

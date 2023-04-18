@@ -1,5 +1,7 @@
 package com.ssamz.jblog.service;
 
+import java.util.Map;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import com.google.gson.Gson;
 
 @Service
 public class KaKaoLoginService {
@@ -36,7 +40,38 @@ public class KaKaoLoginService {
 				String.class		// 응답받을 타입
 		);
 		
-		return responseEntity.getBody();
+		// HTTP 응답 본문(body) 정보 변환
+		String jsonData = responseEntity.getBody();
+		
+		// JSON 데이터에서 액세스 토큰 정보만 추출
+		Gson gsonObj = new Gson();
+		Map<?, ?> data = gsonObj.fromJson(jsonData, Map.class);
+		
+		return (String) data.get("access_token");
 			
+	}
+	
+	public String getUserInfo(String accessToken) {
+		//HttpHeader 생성
+		HttpHeaders header = new HttpHeaders();
+		header.add("Authorization", "Bearer " + accessToken);
+		header.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		//HttpHeader와 HttpBody를 하나의 객체에 담기(body 정보는 생략 가능)
+		HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity(header);
+		
+		// RestTemplate을 이용하면 브라우저 없이 HTTP 요청을 처리할 수 있다.
+		RestTemplate restTemplate = new RestTemplate();
+		
+		// HTTP 요청을 POST(GET) 방식으로 실행 -> 문자열로 응답이 들어온다. 
+		ResponseEntity<String> responseEntity = restTemplate.exchange(
+				"https://kapi.kakao.com/v2/user/me",
+				HttpMethod.POST,
+				requestEntity,
+				String.class
+				);
+		
+		//카카오 인증 서버가 반환한 사용자 정보
+		return responseEntity.getBody();
 	}
 }
