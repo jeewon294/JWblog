@@ -46,4 +46,7 @@ public class User {
 	
 	@CreationTimestamp // 현재시간이 기본값으로 등록되도록 설정
 	private Timestamp createDate;
+	
+	@Enumerated(EnumType.STRING)
+	private OAuthType oauth;
 }

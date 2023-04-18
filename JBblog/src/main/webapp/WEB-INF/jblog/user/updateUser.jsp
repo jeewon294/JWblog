@@ -23,10 +23,12 @@
       <input type="text" class="form-control" id="username" value="${principal.user.username}">
     </div>
     
+    <c:if test="${principal.user.oauth == 'JBLOG'}">
     <div class="mb-3">
       <label for="password">Password:</label>
       <input type="password" class="form-control" id="password" placeholder="Enter password">
     </div>
+    </c:if>
     
     <div class="mb-3">
       <label for="email">Email:</label>

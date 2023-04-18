@@ -1,7 +1,7 @@
 package com.ssamz.jblog.service;
 
 import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -12,9 +12,15 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
+import com.ssamz.jblog.domain.OAuthType;
+import com.ssamz.jblog.domain.RoleType;
+import com.ssamz.jblog.domain.User;
 
 @Service
 public class KaKaoLoginService {
+	@Value("${kakao:kakao123}") 
+	private String kakaoPassword;
+	
 	public String getAccessToken(String code) {
 		// HttpHeaders 생성(MIME 종류)
 		HttpHeaders header = new HttpHeaders();
@@ -51,7 +57,7 @@ public class KaKaoLoginService {
 			
 	}
 	
-	public String getUserInfo(String accessToken) {
+	public User getUserInfo(String accessToken) {
 		//HttpHeader 생성
 		HttpHeaders header = new HttpHeaders();
 		header.add("Authorization", "Bearer " + accessToken);
@@ -72,6 +78,24 @@ public class KaKaoLoginService {
 				);
 		
 		//카카오 인증 서버가 반환한 사용자 정보
-		return responseEntity.getBody();
+		String userInfo = responseEntity.getBody();
+		
+		// JSon 데이터에서 추출한 정보로 User 객체 설정
+		Gson gsonObj = new Gson();
+		Map<?, ?> data = gsonObj.fromJson(userInfo, Map.class);
+		
+		Double id = (Double) (data.get("id"));
+		String nickname = (String) ((Map<?, ?>) (data.get("properties"))).get("nickname");
+		String email = (String) ((Map<?, ?>) (data.get("kakao_account"))).get("email");
+		
+		User user = new User();
+		user.setUsername(email);
+		user.setPassword(kakaoPassword);
+		user.setEmail(email);
+		user.setRole(RoleType.USER);
+		if(user.getOauth() == null) {
+			user.setOauth(OAuthType.JBLOG);
+		}
+		return user;
 	}
 }
