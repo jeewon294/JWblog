@@ -23,7 +23,7 @@
 		
 
 			<button id="btn-login" class="btn btn-secondary"><spring:message code="user.login.form.login_btn"/></button>
-			<a href="https://kauth.kakao.com/oauth/authorize?client_id=b5dd97ec2a4414036b0b0252cf3d9687&redirect_uri=http://localhost:8092/oauth/kakao&response_type=code">
+			<a href="https://kauth.kakao.com/oauth/authorize?client_id=87c669ddbe9f7bec94036af629495f28&redirect_uri=http://localhost:8092/oauth/kakao&response_type=code">
 			<img height="38px" src="/image/kakao_login_btn.png"></a>
 		</form>	
 	</div>

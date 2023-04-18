@@ -126,10 +126,16 @@
 		    <artifactId>spring-security-test</artifactId>
 		    <scope>test</scope>
 		</dependency>    
-		    <!-- JSP용 스프링 시큐리티 라이브러리-->
+		<!-- JSP용 스프링 시큐리티 라이브러리-->
 		<dependency>
 	    	<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
+		</dependency>
+		
+		<!--gson 라이브러리-->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
 		</dependency>
 	</dependencies>
 

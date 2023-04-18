@@ -45,6 +45,7 @@ public class JBlogWebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		// 사용자 정의 로그인 화면 제공
 		http.formLogin().loginPage("/auth/login");
 		
+		
 		// 로그인 요청 URI를 변경한다. 
 		http.formLogin().loginProcessingUrl("/auth/securitylogin");
 		
