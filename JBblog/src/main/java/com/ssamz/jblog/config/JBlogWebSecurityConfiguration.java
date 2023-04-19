@@ -52,6 +52,9 @@ public class JBlogWebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		
 		// 로그아웃 설정
 		http.logout().logoutUrl("/auth/logout").logoutSuccessUrl("/");
+		
+		// 구글 로그인 설정
+		http.oauth2Login();
 	}
 
 	@Bean

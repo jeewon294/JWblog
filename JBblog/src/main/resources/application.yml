@@ -33,3 +33,14 @@ spring:
        hibernate: 
          format_sql: true
          
+# OAuth2 Client 설정
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 798974756754-ejnj3u2llca01qdr1nfjjk0ig5c29db9.apps.googleusercontent.com
+            client-secret: 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
+            scope: email, profile
+               
+         
