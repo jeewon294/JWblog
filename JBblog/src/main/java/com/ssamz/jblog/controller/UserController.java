@@ -40,6 +40,9 @@ public class UserController {
 	@Value("${kakao:kakao123}")
 	private String kakaoPassword;
 	
+	@Value("${google:google123}")
+	private String googlePassword;
+	
 	@GetMapping("/auth/insertUser")
 	public String insertUser() {
 //		System.out.println(9/0); // 에러 테스트
@@ -73,6 +76,9 @@ public class UserController {
 		if(principal.getUser().getOauth().equals(OAuthType.KAKAO)) {
 			// 카카오 회원인 경우 비밀번호 고정
 			user.setPassword(kakaoPassword);
+		}else if(principal.getUser().getOauth().equals(OAuthType.GOOGLE)) {
+			// 구글 회원인 경우 비밀번호 고정
+			user.setPassword(googlePassword);
 		}
 		// 회원정보 수정과 동시에 세션 갱긴
 		principal.setUser(userService.updateUser(user));
