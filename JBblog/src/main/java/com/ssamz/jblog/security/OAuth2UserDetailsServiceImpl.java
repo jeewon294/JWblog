@@ -7,12 +7,14 @@ import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserServ
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
 
 import com.ssamz.jblog.domain.OAuthType;
 import com.ssamz.jblog.domain.RoleType;
 import com.ssamz.jblog.domain.User;
 import com.ssamz.jblog.persistence.UserRepository;
 
+@Service
 public class OAuth2UserDetailsServiceImpl extends DefaultOAuth2UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
